@@ -11,11 +11,10 @@
 <!-- model-viewer (3D) removido: no hay GLB de Zíngara todavía; ver sección hero-3d -->
 <style>
   :root{
-    /* grafito acero, a tono con el PVD Black de las bachas (antes negro puro) */
-    --bg:#24282c;
-    --nav:#1b1f23;
-    --card:#2b3034;
-    --line:#3a3f44;
+    --bg:#000;
+    --nav:#111;
+    --card:#0d0d0d;
+    --line:#2a2a2a;
     --txt:#ffffff;
     --muted:#b5b5b5;
     --green:#b7bfc8;
@@ -68,7 +67,7 @@
     .topbar nav{
       display:none;position:absolute;top:calc(100% + 12px);left:0;right:0;z-index:60;
       flex-direction:column;gap:0;background:var(--nav);
-      border-top:1px solid #2e3338;border-bottom:1px solid #2e3338;padding:6px 0;
+      border-top:1px solid #222;border-bottom:1px solid #222;padding:6px 0;
     }
     .topbar.nav-open nav{display:flex;}
     .topbar nav a{padding:15px 20px;font-size:1.05rem;opacity:1;}
@@ -109,10 +108,10 @@
     background-image:url('assets/zingara-hero-cobre.png');
     background-size:cover;background-position:center;background-repeat:no-repeat;
   }
-  /* velo que funde la textura al gris del fondo arriba (para el wordmark) y abajo (para la sección) */
+  /* velo que funde la textura a negro arriba (para el wordmark) y abajo (para la sección) */
   .hero::after{
     content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(36,40,44,.92) 0%,rgba(36,40,44,.45) 32%,rgba(36,40,44,0) 55%,rgba(36,40,44,.55) 86%,#24282c 100%);
+    background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 32%,rgba(0,0,0,0) 55%,rgba(0,0,0,.5) 86%,#000 100%);
   }
   /* wordmark Zíngara: texto HTML con el mismo gradiente acero de Essentia
      (no hay wordmark oficial en PNG todavía; si llega, volver al esquema de máscara CSS) */
@@ -275,7 +274,7 @@
     .detail-media{position:static;order:-1;}
   }
   .d-item{background:var(--card);border-radius:16px;margin-bottom:14px;overflow:hidden;transition:background .2s;}
-  .d-item.open{background:#31363b;}
+  .d-item.open{background:#171717;}
   .d-head{
     width:100%;background:none;border:0;color:#fff;cursor:pointer;font-family:inherit;
     display:flex;align-items:center;gap:14px;padding:17px 22px;font-size:1.12rem;font-weight:400;text-align:left;
@@ -405,7 +404,7 @@
     .acc-cards .product{grid-column:span 2;}
     .acc-cards .product:nth-child(n+4){grid-column:span 3;}
   }
-  .product{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid #343a3f;overflow:hidden;}
+  .product{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid #161616;overflow:hidden;}
   /* tabla de vidrio: la foto viene recortada por el lado derecho, así que sangra
      desde el borde derecho de la card y el corte queda fuera de vista */
   .acc-img-der{justify-content:flex-end;padding-right:0;}
@@ -517,7 +516,7 @@
   }
 
   /* footer */
-  .foot{background:#1b1f23;padding:40px 0;text-align:center;color:#8a8f96;font-size:.85rem;font-weight:300;}
+  .foot{background:#0a0a0a;padding:40px 0;text-align:center;color:#777;font-size:.85rem;font-weight:300;}
   .foot img{height:34px;margin:0 auto 18px;opacity:.9;}
 
   /* floating whatsapp */
@@ -598,7 +597,7 @@
   <p id="gate-err"></p>
 </div>
 <style>
-  #gate{position:fixed;inset:0;z-index:9999;background:#24282c;display:flex;flex-direction:column;
+  #gate{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;
     align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;
     font-family:"Hanken Grotesk",system-ui,sans-serif;}
   #gate .gate-logo{height:64px;width:auto;opacity:.92;margin-bottom:6px;}
@@ -651,7 +650,7 @@
   <!-- hero banner -->
   <div class="hero" id="hero">
     <h1 class="hero-title">ZÍNGARA</h1>
-    <p class="hero-sub">Cálida e innovadora</p>
+    <p class="hero-sub">Calidad e innovación</p>
   </div>
 
   <!-- (acá iba el 3D de Essentia / banda gold; se sacó a pedido — pendiente GLB Zíngara si se quiere volver a llenar este hueco) -->
