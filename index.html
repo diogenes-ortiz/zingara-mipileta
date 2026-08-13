@@ -102,11 +102,12 @@
     margin-top:36px; /* aire entre el nav y el banner (el gradiente funde arriba al fondo) */
     overflow:hidden;
   }
-  /* la foto vive en ::before para poder animarla sin afectar al wordmark */
+  /* la foto vive en ::before para poder animarla sin afectar al wordmark
+     (banner cobre 1774x887 provisto por el usuario, 13 ago 2026) */
   .hero::before{
     content:"";position:absolute;inset:0;z-index:0;
-    background-image:url('assets/zingara-hero.png');
-    background-size:cover;background-position:center 62%;background-repeat:no-repeat;
+    background-image:url('assets/zingara-hero-cobre.png');
+    background-size:cover;background-position:center;background-repeat:no-repeat;
   }
   /* velo que funde la textura al gris del fondo arriba (para el wordmark) y abajo (para la sección) */
   .hero::after{
