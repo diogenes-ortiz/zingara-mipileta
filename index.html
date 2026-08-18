@@ -417,9 +417,13 @@
   /* accesorios: imagen transparente sin fondo */
   .acc-img{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:10px;}
   .acc-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:transparent;}
-  /* detalles Zíngara: macros que llenan el cuadro (sin fondo blanco) */
-  .acc-img--cover{padding:0;overflow:hidden;border-radius:16px;}
-  .acc-img--cover img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;}
+  /* detalles Zíngara: se amplía una zona del recorte (el interior del producto
+     es opaco, así que el macro nunca trae fondo) */
+  .acc-img--zoom{padding:0;overflow:hidden;border-radius:16px;}
+  .acc-img--zoom img{
+    width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;
+    transform:scale(var(--z,2.4));transform-origin:var(--zx,50%) var(--zy,50%);
+  }
   /* card con plano técnico: mismas líneas blancas que la sección de planos */
   .acc-img--plano{padding:16px;}
   .acc-img--plano img{filter:invert(1);mix-blend-mode:screen;}
@@ -887,24 +891,24 @@
 
     <div class="acc-cards">
       <div class="product">
-        <div class="acc-img acc-img--cover"><img src="assets/zingara-det-valvula.png" alt="Válvula click-clack Zíngara"></div>
-        <h3>Válvula click-clack</h3>
-        <p>Desagüe click-clack incluido, en el mismo acabado que la bacha. Se abre y cierra con un toque.</p>
+        <div class="acc-img acc-img--zoom" style="--z:3.2;--zx:50%;--zy:72%"><img src="assets/zingara-940-gold.png" alt="Válvula pop up Zíngara"></div>
+        <h3>Válvula pop up</h3>
+        <p>Válvula pop up incluida, en el mismo acabado que la bacha. Se abre y cierra con un toque.</p>
       </div>
       <div class="product">
-        <div class="acc-img acc-img--cover"><img src="assets/zingara-det-acero.png" alt="Acero inoxidable AISI 304"></div>
-        <h3>Acero AISI 304 18/8</h3>
-        <p>Chapa de 1,2 mm de espesor: rigidez, higiene y durabilidad para el uso de todos los días.</p>
+        <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:45%;--zy:70%"><img src="assets/zingara-946-black.png" alt="Espesor de 1,2 mm"></div>
+        <h3>Espesor 1,2 mm</h3>
+        <p>Acero inoxidable AISI 304 18/8 con 1,2 mm de espesor: chapa robusta, sin flexión ni vibración, para toda la vida.</p>
       </div>
       <div class="product">
-        <div class="acc-img acc-img--cover"><img src="assets/zingara-det-pvd.png" alt="Acabado Gold PVD"></div>
-        <h3>Acabado PVD</h3>
-        <p>El color se sella al acero: más dureza y resistencia al rayado, la corrosión y el uso diario.</p>
+        <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:30%;--zy:40%"><img src="assets/zingara-946-gold.png" alt="Acabado PVD"></div>
+        <h3>Acabado PVD de por vida</h3>
+        <p>El color se sella al acero: no se descascara ni se destiñe. Resiste el rayado, la corrosión y el uso diario.</p>
       </div>
       <div class="product">
-        <div class="acc-img acc-img--cover"><img src="assets/zingara-det-esquina.png" alt="Esquinas de radio suave"></div>
-        <h3>Radios suaves</h3>
-        <p>Esquinas de radio amplio: estética limpia, líneas contemporáneas y limpieza sin esfuerzo.</p>
+        <div class="acc-img acc-img--zoom" style="--z:1.05;--zx:50%;--zy:50%"><img src="assets/zingara-curve-rose.png" alt="Diseño de lujo"></div>
+        <h3>Diseño de lujo</h3>
+        <p>Líneas puras y radios amplios: una pieza pensada para lucirse sobre la mesada.</p>
       </div>
       <div class="product">
         <div class="acc-img acc-img--plano"><img src="assets/zingara-plano-940.png" alt="Instalación de apoyo"></div>
