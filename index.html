@@ -424,9 +424,6 @@
     width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;
     transform:scale(var(--z,2.4));transform-origin:var(--zx,50%) var(--zy,50%);
   }
-  /* card con plano técnico: mismas líneas blancas que la sección de planos */
-  .acc-img--plano{padding:16px;}
-  .acc-img--plano img{filter:invert(1);mix-blend-mode:screen;}
 
   /* plano técnico (Zíngara desde adentro)
      los diagramas oficiales vienen en líneas negras sobre blanco:
@@ -477,13 +474,11 @@
 
   /* ---------- accessory cards ---------- */
   /* la grilla se estira más allá del container para respirar a los costados */
-  .acc-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:36px;
+  .acc-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px;
     width:min(94vw,1560px);margin-left:calc(50% - min(47vw,780px));}
-  /* tablet/mobile: estructura 3 arriba + 2 abajo */
+  /* tablet/mobile: 2 arriba + 2 abajo */
   @media(max-width:900px){
-    .acc-cards{grid-template-columns:repeat(6,1fr);}
-    .acc-cards .product{grid-column:span 2;}
-    .acc-cards .product:nth-child(n+4){grid-column:span 3;}
+    .acc-cards{grid-template-columns:repeat(2,1fr);}
   }
   .product{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid #161616;overflow:hidden;}
   /* tabla de vidrio: la foto viene recortada por el lado derecho, así que sangra
@@ -669,7 +664,7 @@
     .t3-panel .color-media,.t3-panel .ph{max-width:100%;margin-top:20px;}
     .swatch{width:38px;height:38px;}
 
-    /* accesorios: 3 arriba + 2 abajo (hereda los spans del breakpoint 900), cards compactas */
+    /* accesorios: 2 arriba + 2 abajo (hereda las columnas del breakpoint 900), cards compactas */
     .acc-cards{gap:10px;}
     .product{padding:10px;border-radius:16px;}
     .product h3{font-size:.85rem;margin:10px 0 6px;}
@@ -909,11 +904,6 @@
         <div class="acc-img acc-img--zoom" style="--z:1.05;--zx:50%;--zy:50%"><img src="assets/zingara-curve-rose.png" alt="Diseño de lujo"></div>
         <h3>Diseño de lujo</h3>
         <p>Líneas puras y radios amplios: una pieza pensada para lucirse sobre la mesada.</p>
-      </div>
-      <div class="product">
-        <div class="acc-img acc-img--plano"><img src="assets/zingara-plano-940.png" alt="Instalación de apoyo"></div>
-        <h3>Instalación de apoyo</h3>
-        <p>Apoya sobre la mesada y se convierte en protagonista. Instalación simple, sin recortes complejos.</p>
       </div>
     </div>
 
