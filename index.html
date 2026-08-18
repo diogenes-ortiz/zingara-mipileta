@@ -757,13 +757,14 @@
   <div class="container section">
     <div class="familia-band">
       <h2 class="intro-h2">La familia Zíngara<br><strong>completa</strong></h2>
-      <p class="familia-sub">Tres formatos —cuadrada, redonda y rectangular— en dos acabados PVD: Black y Gold.</p>
+      <p class="familia-sub">Cuatro formatos —cuadrada, redonda, rectangular y oval— en tres acabados PVD: Black, Gold y Rose.</p>
       <div class="familia-row">
         <figure><img src="assets/zingara-938B-cut.png" alt="Zíngara 938 Black"><figcaption>938 Black</figcaption></figure>
         <figure><img src="assets/zingara-938G-cut.png" alt="Zíngara 938 Gold"><figcaption>938 Gold</figcaption></figure>
         <figure><img src="assets/zingara-940G-cut.png" alt="Zíngara 940 Gold"><figcaption>940 Gold</figcaption></figure>
         <figure><img src="assets/zingara-940B-cut.png" alt="Zíngara 940 Black"><figcaption>940 Black</figcaption></figure>
         <figure><img src="assets/zingara-946B-cut.png" alt="Zíngara 946 Black"><figcaption>946 Black</figcaption></figure>
+        <figure><img src="assets/zingara-curve-R.png" alt="Zíngara Curve Rose"><figcaption>Curve Rose</figcaption></figure>
       </div>
     </div>
   </div>
@@ -778,16 +779,18 @@
       </div>
       <div class="tabs3-panels">
         <div class="t3-panel active" data-t3="modelos">
-          <p>Tres formatos —938 cuadrada, 940 redonda y 946 rectangular— y dos acabados PVD según el modelo: Black y Gold.</p>
+          <p>Cuatro formatos —938 cuadrada, 940 redonda, 946 rectangular y Curve oval— y tres acabados PVD según el modelo: Black, Gold y Rose.</p>
           <div class="swatches" data-model-pills>
             <button class="pill" data-model="938">938</button>
             <button class="pill" data-model="940">940</button>
             <button class="pill" data-model="946">946</button>
+            <button class="pill" data-model="curve">Curve</button>
           </div>
           <div class="modelos-row">
           <div class="swatches" data-finish-swatches>
             <button class="swatch black" data-finish="B" title="Black PVD"></button>
             <button class="swatch gold" data-finish="G" title="Gold PVD"></button>
+            <button class="swatch rose" data-finish="R" title="Rose PVD"></button>
           </div>
           <div class="color-media color-media--cut" id="modelos-media">
             <img class="color-frame active" data-key="938B" src="assets/zingara-938B-cut.png" alt="Zíngara 938 Black">
@@ -795,6 +798,7 @@
             <img class="color-frame" data-key="940B" src="assets/zingara-940B-cut.png" alt="Zíngara 940 Black">
             <img class="color-frame" data-key="940G" src="assets/zingara-940G-cut.png" alt="Zíngara 940 Gold">
             <img class="color-frame" data-key="946B" src="assets/zingara-946B-cut.png" alt="Zíngara 946 Black">
+            <img class="color-frame" data-key="curveR" src="assets/zingara-curve-R.png" alt="Zíngara Curve Rose">
           </div>
           </div>
         </div>
@@ -1209,10 +1213,11 @@
     var frames = media.querySelectorAll('.color-frame');
     var pills = document.querySelectorAll('[data-model-pills] [data-model]');
     var sw = document.querySelectorAll('[data-finish-swatches] [data-finish]');
-    // colores disponibles POR modelo (B = Black PVD, G = Gold PVD; la 946 solo viene en Black)
-    var FIN = {'938':['B','G'],'940':['B','G'],'946':['B']};
-    // SIEMPRE de la más chica a la más grande: 938 (40 cm) → 940 (Ø ~42 cm) → 946 (47,5 cm)
-    var ORDEN = ['938','940','946'];
+    // acabados disponibles POR modelo (B = Black PVD, G = Gold PVD, R = Rose PVD).
+    // La 946 solo viene en Black y de la Curve solo hay foto en Rose.
+    var FIN = {'938':['B','G'],'940':['B','G'],'946':['B'],'curve':['R']};
+    // SIEMPRE de la más chica a la más grande: 938 (40) → 940 (Ø40) → 946 (47,5) → Curve (oval, la más larga)
+    var ORDEN = ['938','940','946','curve'];
     var model = '938', finish = 'B', locked = false, i = 0;
     var fadeTimer = null;
     function render(){
@@ -1234,13 +1239,15 @@
     }
     pills.forEach(function(b){ b.addEventListener('click', function(){
       locked = true; model = b.getAttribute('data-model');
-      if(FIN[model].indexOf(finish) === -1) finish = 'B';
+      if(FIN[model].indexOf(finish) === -1) finish = FIN[model][0];
       render();
     }); });
     sw.forEach(function(b){ b.addEventListener('click', function(){
       locked = true; finish = b.getAttribute('data-finish'); render();
     }); });
-    setInterval(function(){ if(!locked){ i = (i+1) % ORDEN.length; model = ORDEN[i]; finish = 'B'; render(); } }, 5000);
+    // al rotar se elige el primer acabado disponible del modelo: forzar 'B' dejaba
+    // a la Curve (solo Rose) sin foto que mostrar
+    setInterval(function(){ if(!locked){ i = (i+1) % ORDEN.length; model = ORDEN[i]; finish = FIN[model][0]; render(); } }, 5000);
     render();
   })();
 
