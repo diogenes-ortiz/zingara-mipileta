@@ -243,6 +243,27 @@
   .t3-panel .inst-media{max-width:560px;width:100%;margin:26px auto 0;border-radius:16px;overflow:hidden;}
   .t3-panel .inst-media img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;}
 
+  /* leyenda del tratamiento PVD, debajo de la foto.
+     Va calificada con .t3-panel: si no, .t3-panel p le pisa el margen */
+  .t3-panel .pvd-note{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin:26px auto 0;font-size:.8rem;font-weight:300;letter-spacing:.06em;
+  }
+  .pvd-note span{
+    text-align:center;   /* en celular parte en dos lineas y quedan centradas */
+    background:linear-gradient(90deg,#6d737b 0%,#6d737b 38%,#f2f5f8 50%,#6d737b 62%,#6d737b 100%);
+    background-size:260% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:pvd-shimmer 7s linear infinite;
+  }
+  /* las dos lineas finas que se desvanecen hacia los costados */
+  .pvd-note::before,.pvd-note::after{
+    content:'';height:1px;width:clamp(18px,5vw,46px);flex:none;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35));
+  }
+  .pvd-note::after{background:linear-gradient(90deg,rgba(255,255,255,.35),transparent);}
+  @keyframes pvd-shimmer{from{background-position:130% 0;}to{background-position:-30% 0;}}
+
   /* ---------- esquema de instalación (SVG en corte, dibujado por código) ---------- */
   .inst-scheme{margin:30px auto 0;max-width:640px;width:100%;}
   .inst-svg{width:100%;height:auto;display:block;font-family:inherit;overflow:visible;}
@@ -579,6 +600,7 @@
   @media (prefers-reduced-motion: reduce){
     html.js .topbar,html.js .hero::before,html.js .hero-title,html.js .hero-sub,html.js .hero-glow{animation:none;}
     html.js .ess-reveal{opacity:1;transform:none;transition:none;}
+    .pvd-note span{animation:none;}
   }
 
   /* footer */
@@ -780,7 +802,7 @@
       </div>
       <div class="tabs3-panels">
         <div class="t3-panel active" data-t3="modelos">
-          <p>Cuatro formatos —938 cuadrada, 940 redonda, 946 rectangular y Curve oval— y tres acabados PVD según el modelo: Black, Gold y Rose.</p>
+          <p>Cuatro formatos —938 cuadrada, 940 redonda, 946 rectangular y Curve— y tres acabados según el modelo: Black, Gold y Rose.</p>
           <div class="swatches" data-model-pills>
             <button class="pill" data-model="938">938</button>
             <button class="pill" data-model="940">940</button>
@@ -803,6 +825,7 @@
             <img class="color-frame" data-key="curveR" src="assets/zingara-curve-rose.png" alt="Zíngara Curve Rose">
           </div>
           </div>
+          <p class="pvd-note"><span>Tratamiento de PVD para garantizar el color para toda la vida</span></p>
         </div>
         <div class="t3-panel" data-t3="instalacion">
           <p>Zíngara es de <strong>apoyo</strong>: la bacha se luce completa sobre la mesada y solo hay que perforar el paso del desagüe.</p>
@@ -1349,7 +1372,7 @@
 <script>
   // Revelado suave de secciones al entrar en pantalla
   (function(){
-    var targets = document.querySelectorAll('.section:not(#signature), .foot');
+    var targets = document.querySelectorAll('.section:not(#signature), .foot, .pvd-note');
     targets.forEach(function(el){ el.classList.add('ess-reveal'); });
     if(!('IntersectionObserver' in window)){
       targets.forEach(function(el){ el.classList.add('in-view'); });
