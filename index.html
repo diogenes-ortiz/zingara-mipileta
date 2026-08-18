@@ -586,11 +586,31 @@
   .foot img{height:34px;margin:0 auto 18px;opacity:.9;}
 
   /* floating whatsapp */
-  .wa{
-    position:fixed;right:22px;bottom:22px;z-index:60;width:56px;height:56px;border-radius:50%;
-    background:#25d366;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
-    box-shadow:0 6px 20px rgba(0,0,0,.4);font-size:1.6rem;
+  /* ---------- botones flotantes (catálogo + WhatsApp) ---------- */
+  /* outline claro sobre vidrio oscuro; al apoyar el mouse se rellenan en blanco,
+     igual que .btn-outline */
+  .float-cat{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:900;
+    padding:13px 26px;border-radius:99px;background:rgba(0,0,0,.35);color:#e9ecef;
+    font-size:.85rem;font-weight:700;white-space:nowrap;text-decoration:none;
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    box-shadow:0 6px 20px rgba(0,0,0,.45);
+    transition:background .25s ease, border-color .25s ease, color .25s ease;
   }
+  .float-cat:hover{background:#fff;border-color:#fff;color:#14181e;}
+  .float-wsp{
+    position:fixed;right:22px;bottom:22px;z-index:900;
+    width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(0,0,0,.45);
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .float-wsp svg{width:21px;height:21px;fill:#e9ecef;transition:fill .25s ease;}
+  .float-wsp:hover{background:#fff;border-color:#fff;}
+  .float-wsp:hover svg{fill:#14181e;}
   .divider-space{height:30px;}
   /* ============ OPTIMIZACIÓN MOBILE ============ */
   @media (max-width: 640px){
@@ -639,6 +659,12 @@
     .loc-form{flex-direction:column;}
     .loc-go{width:100%;}
     .loc-map{min-height:360px;}
+
+    /* botones flotantes: env(safe-area-inset-bottom) los levanta de la barra
+       inferior del navegador; el catálogo se corre para no chocar con WhatsApp */
+    .float-cat{padding:12px 20px;font-size:.8rem;left:calc(50% - 30px);
+      bottom:calc(18px + env(safe-area-inset-bottom, 0px));}
+    .float-wsp{right:14px;bottom:calc(18px + env(safe-area-inset-bottom, 0px));}
 
     /* CTA final / footer */
     .cta-row{gap:12px;}
@@ -1302,6 +1328,22 @@
       });
     }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
     targets.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+<!-- ================= BOTONES FLOTANTES ================= -->
+<a class="float-cat" href="assets/catalogo-zingara.pdf" download target="_blank" rel="noopener">Descargar catálogo</a>
+<a class="float-wsp" id="float-wsp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" style="display:none;">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.8h-.04a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.8 9.8 0 0 1-1.5-5.23c0-5.42 4.41-9.83 9.84-9.83a9.77 9.77 0 0 1 9.83 9.84c0 5.42-4.41 9.82-9.83 9.82M20.52 3.45A11.75 11.75 0 0 0 12.05 0C5.5 0 .17 5.33.17 11.88c0 2.09.55 4.14 1.59 5.94L.07 24l6.33-1.66a11.86 11.86 0 0 0 5.65 1.44h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.16-3.48-8.4"/></svg>
+</a>
+<script>
+  // WhatsApp: número en formato internacional sin + ni espacios. Vacío = botón oculto.
+  (function(){
+    var WA_NUMERO = '5491128563001';
+    var WA_TEXTO  = '¡Hola! Tengo una consulta sobre las bachas Zíngara';
+    var btn = document.getElementById('float-wsp');
+    if(!btn || !WA_NUMERO) return;
+    btn.href = 'https://wa.me/' + WA_NUMERO + '?text=' + encodeURIComponent(WA_TEXTO);
+    btn.style.display = 'flex';
   })();
 </script>
 </body>
