@@ -243,6 +243,37 @@
   .t3-panel .inst-media{max-width:560px;width:100%;margin:26px auto 0;border-radius:16px;overflow:hidden;}
   .t3-panel .inst-media img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;}
 
+  /* ---------- esquema de instalación (SVG en corte, dibujado por código) ---------- */
+  .inst-scheme{margin:30px auto 0;max-width:640px;width:100%;}
+  .inst-svg{width:100%;height:auto;display:block;font-family:inherit;overflow:visible;}
+  .zi-t{fill:#b7bfc8;font-size:13px;font-weight:300;letter-spacing:.06em;}
+  /* la bacha "baja" hasta apoyar en la mesada al entrar en pantalla */
+  .zi-l{transition:opacity .5s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);}
+  .inst-scheme .zi-bacha{opacity:0;transform:translateY(-30px);}
+  .inst-scheme .zi-term{opacity:0;transform:translateY(-12px);transition-delay:.18s;}
+  .inst-scheme.armado .zi-bacha,
+  .inst-scheme.armado .zi-term{opacity:1;transform:translateY(0);}
+
+  .inst-cap{margin:10px auto 0;max-width:520px;color:var(--muted);font-weight:300;font-size:.95rem;}
+
+  .inst-legend{display:flex;gap:26px;justify-content:center;margin-top:18px;flex-wrap:wrap;}
+  .inst-key{display:flex;align-items:center;gap:9px;color:var(--muted);font-weight:300;font-size:.85rem;}
+  .inst-key i{width:26px;height:15px;border-radius:3px;display:block;}
+  .inst-key .k-mesada{border:1px solid #8b939c;
+    background:repeating-linear-gradient(45deg,#15181b 0 3px,#4d545c 3px 5px);}
+  .inst-key .k-bacha{border:1px solid #f2f5f8;
+    background:linear-gradient(180deg,#fff,#d6dbe1 28%,#8f969f 55%,#eef1f4);}
+
+  @media(max-width:640px){
+    .inst-scheme{margin-top:22px;}
+    .zi-t{font-size:15px;}
+    .inst-legend{gap:18px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .zi-l{transition:none;}
+    .inst-scheme .zi-bacha,.inst-scheme .zi-term{opacity:1;transform:none;}
+  }
+
   /* feature icons row */
   .feat-icons{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-top:36px;}
   .feat{flex:1 1 220px;max-width:300px;text-align:center;}
@@ -736,11 +767,53 @@
           </div>
         </div>
         <div class="t3-panel" data-t3="instalacion">
-          <p>Instalación de apoyo: la bacha se luce completa sobre la mesada, con un corte simple solo para el desagüe.</p>
-          <div class="swatches">
-            <button class="pill sel">De apoyo</button>
+          <p>Zíngara es de <strong>apoyo</strong>: la bacha se luce completa sobre la mesada y solo hay que perforar el paso del desagüe.</p>
+          <figure class="inst-scheme">
+            <svg class="inst-svg" viewBox="20 80 520 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema en corte de la instalación de apoyo de Zíngara">
+              <defs>
+                <pattern id="zi-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+                  <rect width="9" height="9" fill="#15181b"/>
+                  <line x1="0" y1="0" x2="0" y2="9" stroke="#4d545c" stroke-width="2.2"/>
+                </pattern>
+                <linearGradient id="zi-steel" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ffffff"/>
+                  <stop offset=".28" stop-color="#d6dbe1"/>
+                  <stop offset=".55" stop-color="#8f969f"/>
+                  <stop offset=".8" stop-color="#c2c9d1"/>
+                  <stop offset="1" stop-color="#eef1f4"/>
+                </linearGradient>
+                <linearGradient id="zi-dark" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#4a5057"/>
+                  <stop offset="1" stop-color="#23272b"/>
+                </linearGradient>
+              </defs>
+
+              <!-- mesada en corte (tramado, como en los planos técnicos) -->
+              <g class="zi-l zi-mesada">
+                <rect x="30" y="190" width="236" height="36" fill="url(#zi-hatch)" stroke="#8b939c" stroke-width="2"/>
+                <rect x="294" y="190" width="236" height="36" fill="url(#zi-hatch)" stroke="#8b939c" stroke-width="2"/>
+              </g>
+
+              <!-- la bacha, en corte, apoyada sobre la mesada -->
+              <g class="zi-l zi-bacha">
+                <path d="M170,96 L170,174 Q170,190 186,190 L266,190 L266,176 L190,176 Q184,176 184,170 L184,96 Z" fill="url(#zi-steel)" stroke="#f2f5f8" stroke-width="1.4"/>
+                <path d="M390,96 L390,174 Q390,190 374,190 L294,190 L294,176 L370,176 Q376,176 376,170 L376,96 Z" fill="url(#zi-steel)" stroke="#f2f5f8" stroke-width="1.4"/>
+              </g>
+
+              <!-- válvula click-clack: pasa por el calado y ajusta por debajo -->
+              <g class="zi-l zi-term">
+                <rect x="267" y="176" width="26" height="64" rx="3" fill="url(#zi-dark)" stroke="#7c848e" stroke-width="1.4"/>
+                <rect x="254" y="226" width="52" height="14" rx="3" fill="url(#zi-dark)" stroke="#7c848e" stroke-width="1.4"/>
+                <rect x="258" y="164" width="44" height="12" rx="6" fill="url(#zi-dark)" stroke="#7c848e" stroke-width="1.4"/>
+              </g>
+            </svg>
+            <figcaption class="inst-cap">Corte del sistema de apoyo: la mesada se perfora solo en el paso del desagüe, la bacha apoya encima y la válvula click-clack ajusta por debajo.</figcaption>
+          </figure>
+
+          <div class="inst-legend">
+            <span class="inst-key"><i class="k-mesada"></i>Mesada</span>
+            <span class="inst-key"><i class="k-bacha"></i>Bacha Zíngara</span>
           </div>
-          <div class="inst-media"><img src="assets/zingara-946-frente-cut.png" alt="Zíngara 946 de apoyo sobre mesada" style="object-fit:contain;"></div>
         </div>
       </div>
     </div>
@@ -1137,6 +1210,23 @@
     }); });
     setInterval(function(){ if(!locked){ i = (i+1) % ORDEN.length; model = ORDEN[i]; finish = 'B'; render(); } }, 5000);
     render();
+  })();
+
+  // Esquema de instalación: la bacha baja y apoya cuando el esquema entra en pantalla
+  // (Zíngara es siempre de apoyo, por eso hay un solo esquema y no un selector de modos)
+  (function(){
+    var fig = document.querySelector('.inst-scheme');
+    if(!fig) return;
+    function armar(){ fig.classList.add('armado'); }
+    if(!('IntersectionObserver' in window)){ armar(); return; }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ armar(); io.unobserve(e.target); } });
+    }, {threshold:.35});
+    io.observe(fig);
+    // el panel arranca oculto (display:none): si al mostrarse ya estaba en pantalla,
+    // el observer no dispara, así que lo forzamos al abrir la pestaña
+    var tab = document.querySelector('.t3[data-t3="instalacion"]');
+    if(tab) tab.addEventListener('click', function(){ setTimeout(armar, 60); });
   })();
 
   // Conocé cada detalle — selector vertical: cambia panel de texto + foto
