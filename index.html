@@ -1031,7 +1031,8 @@
     <h2 class="intro-h2" style="margin-top:14px;">Enterate de lo que<br><strong>viene</strong></h2>
     <p class="lead">Novedades de la línea, nuevos acabados y material técnico. Sin spam.</p>
 
-    <form class="nl-form" id="nl-form" novalidate>
+    <form class="nl-form" id="nl-form" novalidate><!--SHOPIFY:FORM-->
+      <!--SHOPIFY:CAMPOS-INI-->
       <div class="nl-campos">
         <span class="nl-label" id="nl-perfil-label">¿Qué te trae por acá?</span>
         <!-- perfil: define a quién le hablamos después. Tres oficios + el momento -->
@@ -1047,11 +1048,14 @@
         </div>
         <p class="nl-aviso" id="nl-aviso" role="status" aria-live="polite"></p>
       </div>
+      <!--SHOPIFY:CAMPOS-FIN-->
+      <!--SHOPIFY:GRACIAS-INI-->
       <div class="nl-gracias">
         <h3>¡Listo!</h3>
         <p>Te vamos a escribir cuando haya algo que valga la pena.</p>
       </div>
-    </form>
+      <!--SHOPIFY:GRACIAS-FIN-->
+    </form><!--SHOPIFY:ENDFORM-->
   </div>
 </section>
 
@@ -1443,15 +1447,21 @@
       if(aviso.classList.contains('error')) decir('', '');
     });
     form.addEventListener('submit', function(e){
-      e.preventDefault();
       var valor = email.value.trim();
-      if(!perfil){ decir('Elegí una opción para saber qué mandarte.', 'error'); return; }
-      if(!/^[^@s]+@[^@s]+.[^@s]{2,}$/.test(valor)){
-        email.classList.add('error');
-        decir('Revisá el correo, parece que falta algo.', 'error');
-        email.focus();
+      var invalido = !perfil ? 'Elegí una opción para saber qué mandarte.'
+        : !/^[^@s]+@[^@s]+.[^@s]{2,}$/.test(valor) ? 'Revisá el correo, parece que falta algo.'
+        : null;
+      if(invalido){
+        e.preventDefault();
+        if(perfil){ email.classList.add('error'); email.focus(); }
+        decir(invalido, 'error');
         return;
       }
+      // en Shopify #nl-tags existe: se manda de verdad y el perfil va como etiqueta
+      var tags = document.getElementById('nl-tags');
+      if(tags){ tags.value = 'newsletter, ' + perfil; return; }
+      // en el HTML estatico no hay a donde mandarlo: solo agradece
+      e.preventDefault();
       form.classList.add('enviado');
     });
   })();
