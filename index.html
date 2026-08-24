@@ -426,12 +426,34 @@
   .acc-img--valvula img{
     position:absolute;inset:0;width:100%;height:100%;
     max-width:none;max-height:none;object-fit:cover;
+    /* base con un poco de zoom: deja aire para que el "hundido" del click
+       no descubra los bordes del cuadro */
+    transform:scale(1.03);
+    animation:zin-val-pop 5.6s cubic-bezier(.33,.9,.35,1) infinite;
+    will-change:transform;
   }
-  .acc-img--valvula .val-cerrada{animation:zin-valvula 4.6s ease-in-out infinite;}
-  @keyframes zin-valvula{
-    0%,38%  {opacity:1;}   /* cerrada */
-    50%,88% {opacity:0;}   /* abierta: asoma el vástago */
-    100%    {opacity:1;}   /* y se cierra de nuevo */
+  /* la cerrada va encima y ademas se funde */
+  .acc-img--valvula .val-cerrada{
+    animation:zin-val-pop 5.6s cubic-bezier(.33,.9,.35,1) infinite,
+              zin-val-fade 5.6s cubic-bezier(.4,0,.2,1) infinite;
+    will-change:transform,opacity;
+  }
+  /* el gesto del click-clack: se hunde, salta, queda arriba, y vuelve */
+  @keyframes zin-val-pop{
+    0%,22%   {transform:scale(1.03);}
+    30%      {transform:scale(1.012);}  /* se presiona */
+    40%      {transform:scale(1.078);}  /* salta */
+    47%      {transform:scale(1.048);}  /* rebota */
+    53%,70%  {transform:scale(1.058);}  /* queda arriba */
+    78%      {transform:scale(1.016);}  /* se presiona de nuevo */
+    88%      {transform:scale(1.041);}  /* rebota al bajar */
+    100%     {transform:scale(1.03);}
+  }
+  /* el cambio de foto acompaña al salto, no al reves */
+  @keyframes zin-val-fade{
+    0%,30%   {opacity:1;}
+    40%,72%  {opacity:0;}   /* abierta: asoma el vástago */
+    84%,100% {opacity:1;}
   }
 
   /* detalles Zíngara: se amplía una zona del recorte (el interior del producto
@@ -504,6 +526,14 @@
   .acc-img-der img{margin-right:-18px;}
   .product h3{font-size:1.2rem;font-weight:400;margin:16px 0 8px;}
   .product p{color:var(--muted);font-size:.9rem;font-weight:300;margin:0;}
+
+  /* nota de Mercado Libre (sin link por ahora) */
+  .ml-nota{
+    display:flex;align-items:center;justify-content:center;gap:10px;margin:30px auto 0;
+    color:var(--muted);font-size:.86rem;font-weight:300;line-height:1.5;
+    max-width:420px;text-align:left;
+  }
+  .ml-nota svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;}
 
   /* ---------- buttons / CTA ---------- */
   .btn{
@@ -649,7 +679,7 @@
     html.js .topbar,html.js .hero::before,html.js .hero-title,html.js .hero-sub,html.js .hero-glow{animation:none;}
     html.js .ess-reveal{opacity:1;transform:none;transition:none;}
     .pvd-note span{animation:none;}
-    .acc-img--valvula .val-cerrada{animation:none;}
+    .acc-img--valvula img{animation:none;transform:scale(1.03);}
   }
 
   /* footer */
@@ -962,9 +992,10 @@
       </div>
     </div>
 
-    <div class="cta-row">
-      <a class="btn btn-metal" href="#">Comprar en Mercado Libre</a>
-    </div>
+    <p class="ml-nota">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7.2"/><path d="M16.5 16.5 21 21"/></svg>
+      <span>Encontranos en Mercado Libre a través de nuestros distribuidores.</span>
+    </p>
   </div>
 </section>
 
@@ -1051,9 +1082,12 @@
       <p style="margin-top:20px;color:#e9ecef;font-size:1rem;font-weight:600;">Garantía de 10 Años</p>
       <p style="margin-top:8px;color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.65;">Se cubre a sus piletas y mesadas de acero inoxidable AISI 304-18/8 y 18/10 mediante esta GARANTÍA indiscutible de defectos de fabricación, en usos normales, por el término de 10 años.</p>
       <div class="cta-row">
-        <a class="btn btn-metal" href="#">Comprar en Mercado Libre</a>
-        <a class="btn btn-outline" href="#donde-comprar">Dónde comprar</a>
+        <a class="btn btn-metal" href="#donde-comprar">Dónde comprar</a>
       </div>
+      <p class="ml-nota">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7.2"/><path d="M16.5 16.5 21 21"/></svg>
+        <span>Encontranos en Mercado Libre a través de nuestros distribuidores.</span>
+      </p>
     </div>
   </div>
 </section>
