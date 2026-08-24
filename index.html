@@ -153,9 +153,9 @@
   .familia-sub{color:var(--muted);font-weight:300;margin:14px auto 0;max-width:640px;}
   .familia-row{
     display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;
-    gap:26px 2.5%;max-width:min(94vw,1180px);margin:44px auto 0;
+    gap:26px 2.5%;max-width:min(94vw,1560px);margin:44px auto 0;
   }
-  .familia-row figure{margin:0;flex:0 1 30%;min-width:0;}   /* 3 por fila */
+  .familia-row figure{margin:0;flex:0 1 23%;min-width:0;}   /* 8 piezas: 4 + 4, cada par junto */
   .familia-row img{width:100%;height:auto;display:block;}
   .familia-row figcaption{margin-top:12px;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:#8a8f96;font-weight:300;}
   @media(max-width:640px){
@@ -809,12 +809,14 @@
   <div class="container section">
     <div class="familia-band">
       <h2 class="intro-h2">La familia Zíngara<br><strong>completa</strong></h2>
-      <p class="familia-sub">Tres formatos —cuadrada, redonda y oval— en tres acabados PVD: Black, Gold y Rose.</p>
+      <p class="familia-sub">Cuatro formatos —cuadrada, redonda, rectangular y oval— en tres acabados PVD: Black, Gold y Rose.</p>
       <div class="familia-row">
         <figure><img src="assets/zingara-938-gold.png" alt="Zíngara 938 Gold"><figcaption>938 Gold</figcaption></figure>
         <figure><img src="assets/zingara-938-black.png" alt="Zíngara 938 Black"><figcaption>938 Black</figcaption></figure>
         <figure><img src="assets/zingara-940-gold.png" alt="Zíngara 940 Gold"><figcaption>940 Gold</figcaption></figure>
         <figure><img src="assets/zingara-940-black.png" alt="Zíngara 940 Black"><figcaption>940 Black</figcaption></figure>
+        <figure><img src="assets/zingara-946-gold.png" alt="Zíngara 946 Gold"><figcaption>946 Gold</figcaption></figure>
+        <figure><img src="assets/zingara-946-black.png" alt="Zíngara 946 Black"><figcaption>946 Black</figcaption></figure>
         <figure><img src="assets/zingara-oval-rose.png" alt="Zíngara Oval Rose"><figcaption>Oval Rose</figcaption></figure>
         <figure><img src="assets/zingara-oval-black.png" alt="Zíngara Oval Black"><figcaption>Oval Black</figcaption></figure>
       </div>
@@ -831,10 +833,11 @@
       </div>
       <div class="tabs3-panels">
         <div class="t3-panel active" data-t3="modelos">
-          <p>Tres formatos —938 cuadrada, 940 redonda y Oval— y tres acabados según el modelo: Black, Gold y Rose.</p>
+          <p>Cuatro formatos —938 cuadrada, 940 redonda, 946 rectangular y Oval— y tres acabados según el modelo: Black, Gold y Rose.</p>
           <div class="swatches" data-model-pills>
             <button class="pill" data-model="938">938</button>
             <button class="pill" data-model="940">940</button>
+            <button class="pill" data-model="946">946</button>
             <button class="pill" data-model="oval">Oval</button>
           </div>
           <div class="modelos-row">
@@ -848,11 +851,13 @@
             <img class="color-frame" data-key="938G" src="assets/zingara-938-gold.png" alt="Zíngara 938 Gold">
             <img class="color-frame" data-key="940B" src="assets/zingara-940-black.png" alt="Zíngara 940 Black">
             <img class="color-frame active" data-key="940G" src="assets/zingara-940-gold.png" alt="Zíngara 940 Gold">
+            <img class="color-frame" data-key="946B" src="assets/zingara-946-black.png" alt="Zíngara 946 Black">
+            <img class="color-frame" data-key="946G" src="assets/zingara-946-gold.png" alt="Zíngara 946 Gold">
             <img class="color-frame" data-key="ovalR" src="assets/zingara-oval-rose.png" alt="Zíngara Oval Rose">
             <img class="color-frame" data-key="ovalB" src="assets/zingara-oval-black.png" alt="Zíngara Oval Black">
           </div>
           </div>
-          <p class="pvd-note"><span>Tratamiento de PVD para garantizar el color para toda la vida</span></p>
+          <p class="pvd-note"><span>Tratamiento PVD para garantizar el color toda la vida</span></p>
         </div>
         <div class="t3-panel" data-t3="instalacion">
           <p>Zíngara es de <strong>apoyo</strong>: la bacha se luce completa sobre la mesada y solo hay que perforar el paso del desagüe.</p>
@@ -919,9 +924,9 @@
         <p>Válvula pop up incluida, en el mismo acabado que la bacha. Se abre y cierra con un toque.</p>
       </div>
       <div class="product">
-        <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:25%;--zy:30%"><img src="assets/zingara-938-black.png" alt="Espesor de chapa y ala"></div>
-        <h3>Espesor 1,2 mm · ala de 3 mm</h3>
-        <p>Acero inoxidable AISI 304 18/8: chapa de 1,2 mm y un ala de 3 mm de espesor. Sin flexión ni vibración, y un borde con presencia real.</p>
+        <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:25%;--zy:30%"><img src="assets/zingara-938-black.png" alt="Espesor de 1,2 mm"></div>
+        <h3>Espesor 1,2 mm</h3>
+        <p>Acero inoxidable AISI 304 18/8 con 1,2 mm de espesor: chapa robusta, sin flexión ni vibración, para toda la vida.</p>
       </div>
       <div class="product">
         <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:40%;--zy:25%"><img src="assets/zingara-938-gold.png" alt="Acabado PVD"></div>
@@ -961,6 +966,13 @@
           <button class="d-head"><span class="d-arrow">▾</span>940 · Redonda</button>
           <div class="d-body">
             <p>Interior Ø 40 cm · 13 cm de profundidad. Acabados: Black y Gold.</p>
+          </div>
+        </div>
+
+        <div class="d-item" data-plano="assets/zingara-plano-946.png">
+          <button class="d-head"><span class="d-arrow">▾</span>946 · Rectangular</button>
+          <div class="d-body">
+            <p>Exterior 47,5 × 36,5 cm · cuba 46 × 35 cm · 13 cm de profundidad. Acabados: Gold y Black.</p>
           </div>
         </div>
 
@@ -1056,6 +1068,15 @@
       </div>
       <!--SHOPIFY:GRACIAS-FIN-->
     </form><!--SHOPIFY:ENDFORM-->
+  </div>
+</section>
+
+<!-- ================= OTRA LÍNEA ================= -->
+<section class="section" style="padding-top:0;">
+  <div class="container" style="text-align:center;">
+    <p class="lead" style="margin-bottom:22px;">Mi Pileta también tiene una línea para la cocina.</p>
+    <!-- en Shopify el build lo cambia por /pages/essentia -->
+    <a class="btn btn-outline" href="https://diogenes-ortiz.github.io/essentia-mipileta/" data-essentia>Visitar la línea Essentia</a>
   </div>
 </section>
 
@@ -1291,10 +1312,10 @@
     // acabados disponibles POR modelo (B = Black PVD, G = Gold PVD, R = Rose PVD).
     // La Oval no tiene Gold; la 946 está fuera de la línea por ahora.
     // El primero de cada lista es el acabado que toma la rotación
-    var FIN = {'938':['G','B'],'940':['G','B'],'oval':['R','B']};
-    // SIEMPRE de la más chica a la más grande: 938 (40) → 940 (Ø40) → Oval (la más larga)
-    var ORDEN = ['938','940','oval'];
-    // arranca en la 940 Gold y desde ahí sigue el orden (Oval → 938 → …)
+    var FIN = {'938':['G','B'],'940':['G','B'],'946':['G','B'],'oval':['R','B']};
+    // SIEMPRE de la más chica a la más grande: 938 (40) → 940 (Ø40) → 946 (47,5) → Oval (la más larga)
+    var ORDEN = ['938','940','946','oval'];
+    // arranca en la 940 Gold y desde ahí sigue el orden (946 → Oval → 938 → …)
     var model = '940', finish = 'G', locked = false, i = ORDEN.indexOf('940');
     var fadeTimer = null;
     function render(){
