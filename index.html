@@ -152,10 +152,10 @@
   }
   .familia-sub{color:var(--muted);font-weight:300;margin:14px auto 0;max-width:640px;}
   .familia-row{
-    display:flex;align-items:flex-end;justify-content:center;gap:2.5%;
-    max-width:1280px;margin:44px auto 0;
+    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;
+    gap:26px 2.5%;max-width:min(94vw,1180px);margin:44px auto 0;
   }
-  .familia-row figure{margin:0;flex:1 1 0;min-width:0;}
+  .familia-row figure{margin:0;flex:0 1 30%;min-width:0;}   /* 3 por fila */
   .familia-row img{width:100%;height:auto;display:block;}
   .familia-row figcaption{margin-top:12px;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:#8a8f96;font-weight:300;}
   @media(max-width:640px){
@@ -238,7 +238,7 @@
   .t3-panel.active{display:block;animation:zin-panel-in .5s cubic-bezier(.22,.61,.36,1);}
   .t3-panel p{color:var(--muted);font-weight:300;max-width:640px;margin:0 auto;}
   .t3-panel .swatches{justify-content:center;margin-top:18px;}
-  .t3-panel .color-media,.t3-panel .ph{max-width:560px;width:100%;margin:26px auto 0;}
+  .t3-panel .color-media,.t3-panel .ph{max-width:700px;width:100%;margin:26px auto 0;}
   .t3-panel .inst-media{max-width:560px;width:100%;margin:26px auto 0;border-radius:16px;overflow:hidden;}
   .t3-panel .inst-media img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;}
 
@@ -457,7 +457,7 @@
   /* terminaciones del panel Modelos y colores: columna vertical a la DERECHA,
      por fuera de la foto (así nunca toca la pileta, ni con la 671), centrada a su altura */
   .modelos-row{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:14px;}
-  .modelos-row .color-media{margin:0;flex:0 1 560px;}
+  .modelos-row .color-media{margin:0;flex:0 1 700px;}
   .modelos-row [data-finish-swatches]{flex-direction:column;gap:12px;margin:0;flex:none;order:2;}
   .modelos-row [data-finish-swatches] .swatch{width:26px;height:26px;border-width:1.5px;}
   /* terminación no disponible para el modelo elegido: se desvanece en el lugar
@@ -815,8 +815,8 @@
         <figure><img src="assets/zingara-938-black.png" alt="Zíngara 938 Black"><figcaption>938 Black</figcaption></figure>
         <figure><img src="assets/zingara-940-gold.png" alt="Zíngara 940 Gold"><figcaption>940 Gold</figcaption></figure>
         <figure><img src="assets/zingara-940-black.png" alt="Zíngara 940 Black"><figcaption>940 Black</figcaption></figure>
-        <figure><img src="assets/zingara-curve-rose.png" alt="Zíngara Curve Rose"><figcaption>Curve Rose</figcaption></figure>
-        <figure><img src="assets/zingara-curve-black.png" alt="Zíngara Curve Black"><figcaption>Curve Black</figcaption></figure>
+        <figure><img src="assets/zingara-oval-rose.png" alt="Zíngara Oval Rose"><figcaption>Oval Rose</figcaption></figure>
+        <figure><img src="assets/zingara-oval-black.png" alt="Zíngara Oval Black"><figcaption>Oval Black</figcaption></figure>
       </div>
     </div>
   </div>
@@ -831,11 +831,11 @@
       </div>
       <div class="tabs3-panels">
         <div class="t3-panel active" data-t3="modelos">
-          <p>Tres formatos —938 cuadrada, 940 redonda y Curve oval— y tres acabados según el modelo: Black, Gold y Rose.</p>
+          <p>Tres formatos —938 cuadrada, 940 redonda y Oval— y tres acabados según el modelo: Black, Gold y Rose.</p>
           <div class="swatches" data-model-pills>
             <button class="pill" data-model="938">938</button>
             <button class="pill" data-model="940">940</button>
-            <button class="pill" data-model="curve">Curve</button>
+            <button class="pill" data-model="oval">Oval</button>
           </div>
           <div class="modelos-row">
           <div class="swatches" data-finish-swatches>
@@ -848,8 +848,8 @@
             <img class="color-frame" data-key="938G" src="assets/zingara-938-gold.png" alt="Zíngara 938 Gold">
             <img class="color-frame" data-key="940B" src="assets/zingara-940-black.png" alt="Zíngara 940 Black">
             <img class="color-frame active" data-key="940G" src="assets/zingara-940-gold.png" alt="Zíngara 940 Gold">
-            <img class="color-frame" data-key="curveR" src="assets/zingara-curve-rose.png" alt="Zíngara Curve Rose">
-            <img class="color-frame" data-key="curveB" src="assets/zingara-curve-black.png" alt="Zíngara Curve Black">
+            <img class="color-frame" data-key="ovalR" src="assets/zingara-oval-rose.png" alt="Zíngara Oval Rose">
+            <img class="color-frame" data-key="ovalB" src="assets/zingara-oval-black.png" alt="Zíngara Oval Black">
           </div>
           </div>
           <p class="pvd-note"><span>Tratamiento de PVD para garantizar el color para toda la vida</span></p>
@@ -919,9 +919,9 @@
         <p>Válvula pop up incluida, en el mismo acabado que la bacha. Se abre y cierra con un toque.</p>
       </div>
       <div class="product">
-        <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:25%;--zy:30%"><img src="assets/zingara-938-black.png" alt="Espesor de 1,2 mm"></div>
-        <h3>Espesor 1,2 mm</h3>
-        <p>Acero inoxidable AISI 304 18/8 con 1,2 mm de espesor: chapa robusta, sin flexión ni vibración, para toda la vida.</p>
+        <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:25%;--zy:30%"><img src="assets/zingara-938-black.png" alt="Espesor de chapa y ala"></div>
+        <h3>Espesor 1,2 mm · ala de 3 mm</h3>
+        <p>Acero inoxidable AISI 304 18/8: chapa de 1,2 mm y un ala de 3 mm de espesor. Sin flexión ni vibración, y un borde con presencia real.</p>
       </div>
       <div class="product">
         <div class="acc-img acc-img--zoom" style="--z:3.4;--zx:40%;--zy:25%"><img src="assets/zingara-938-gold.png" alt="Acabado PVD"></div>
@@ -929,7 +929,7 @@
         <p>El color se sella al acero: no se descascara ni se destiñe. Resiste el rayado, la corrosión y el uso diario.</p>
       </div>
       <div class="product">
-        <div class="acc-img acc-img--zoom" style="--z:1.05;--zx:50%;--zy:50%"><img src="assets/zingara-curve-rose.png" alt="Diseño de lujo"></div>
+        <div class="acc-img acc-img--zoom" style="--z:1.05;--zx:50%;--zy:50%"><img src="assets/zingara-oval-rose.png" alt="Diseño de lujo"></div>
         <h3>Diseño de lujo</h3>
         <p>Líneas puras y radios amplios: una pieza pensada para lucirse sobre la mesada.</p>
       </div>
@@ -1289,12 +1289,12 @@
     var pills = document.querySelectorAll('[data-model-pills] [data-model]');
     var sw = document.querySelectorAll('[data-finish-swatches] [data-finish]');
     // acabados disponibles POR modelo (B = Black PVD, G = Gold PVD, R = Rose PVD).
-    // La Curve no tiene Gold; la 946 está fuera de la línea por ahora.
+    // La Oval no tiene Gold; la 946 está fuera de la línea por ahora.
     // El primero de cada lista es el acabado que toma la rotación
-    var FIN = {'938':['G','B'],'940':['G','B'],'curve':['R','B']};
-    // SIEMPRE de la más chica a la más grande: 938 (40) → 940 (Ø40) → Curve (oval, la más larga)
-    var ORDEN = ['938','940','curve'];
-    // arranca en la 940 Gold y desde ahí sigue el orden (Curve → 938 → …)
+    var FIN = {'938':['G','B'],'940':['G','B'],'oval':['R','B']};
+    // SIEMPRE de la más chica a la más grande: 938 (40) → 940 (Ø40) → Oval (la más larga)
+    var ORDEN = ['938','940','oval'];
+    // arranca en la 940 Gold y desde ahí sigue el orden (Oval → 938 → …)
     var model = '940', finish = 'G', locked = false, i = ORDEN.indexOf('940');
     var fadeTimer = null;
     function render(){
@@ -1323,7 +1323,7 @@
       locked = true; finish = b.getAttribute('data-finish'); render();
     }); });
     // al rotar se elige el primer acabado disponible del modelo: forzar 'B' dejaba
-    // a la Curve (solo Rose) sin foto que mostrar
+    // a la Oval sin foto que mostrar
     render();
     // la rotación no arranca hasta que la sección está a la vista: así el usuario
     // siempre ve primero la 940 Gold, no una foto a mitad del ciclo
